@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Description>An Owin handler for the Prometheus.Client</Description>
+    <Copyright>2018 © Sergey Kuznetsov</Copyright>
+    <AssemblyTitle>Prometheus.Client.Owin</AssemblyTitle>
+    <VersionPrefix>1.5.0</VersionPrefix>
+    <Authors>Sergey Kuznetsov</Authors>
+    <TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
+    <AssemblyName>Prometheus.Client.AspNetCore</AssemblyName>
+    <PackageId>Prometheus.Client.AspNetCore</PackageId>
+    <PackageTags>prometheus;metrics</PackageTags>
+    <PackageIconUrl>https://image.ibb.co/k4Sc0k/prometheus.png</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore</PackageProjectUrl>
+    <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore</RepositoryUrl>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Prometheus.Client" Version="1.5.0" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3'">
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions">
+      <Version>1.1.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions">
+      <Version>2.0.0</Version>
+    </PackageReference>
+  </ItemGroup>
+</Project>
