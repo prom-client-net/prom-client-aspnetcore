@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Description>An Owin handler for the Prometheus.Client</Description>
+    <Description>Middleware for the Prometheus.Client</Description>
     <Copyright>2018 © Sergey Kuznetsov</Copyright>
     <AssemblyTitle>Prometheus.Client.Owin</AssemblyTitle>
     <VersionPrefix>1.5.0</VersionPrefix>
