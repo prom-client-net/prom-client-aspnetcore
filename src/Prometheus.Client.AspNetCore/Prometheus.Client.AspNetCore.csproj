@@ -2,8 +2,8 @@
   <PropertyGroup>
     <Description>Middleware for the Prometheus.Client</Description>
     <Copyright>2018 © Sergey Kuznetsov</Copyright>
-    <AssemblyTitle>Prometheus.Client.Owin</AssemblyTitle>
-    <VersionPrefix>1.5.0</VersionPrefix>
+    <AssemblyTitle>Prometheus.Client.AspNetCore</AssemblyTitle>
+    <VersionPrefix>1.5.1</VersionPrefix>
     <Authors>Sergey Kuznetsov</Authors>
     <TargetFrameworks>netstandard1.3;netstandard2.0</TargetFrameworks>
     <AssemblyName>Prometheus.Client.AspNetCore</AssemblyName>
@@ -18,7 +18,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Prometheus.Client" Version="1.5.0" />
+    <PackageReference Include="Prometheus.Client" Version="[1.5.0,1.6.0)" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions">
