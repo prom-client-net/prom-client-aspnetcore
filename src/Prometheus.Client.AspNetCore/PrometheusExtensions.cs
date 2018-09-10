@@ -25,7 +25,7 @@ namespace Prometheus.Client.AspNetCore
         {
             var options = new PrometheusOptions();
             setupOptions?.Invoke(options);
-            
+
             if (app == null)
                 throw new ArgumentNullException(nameof(app));
 
@@ -60,9 +60,9 @@ namespace Prometheus.Client.AspNetCore
         {
             if (options.UseDefaultCollectors)
             {
-                var metricFactory = Metrics.DefaultFactory;
-                if (options.CollectorRegistryInstance != CollectorRegistry.Instance)
-                    metricFactory = new MetricFactory(options.CollectorRegistryInstance);
+                var metricFactory = options.CollectorRegistryInstance == CollectorRegistry.Instance 
+                    ? Metrics.DefaultFactory 
+                    : new MetricFactory(options.CollectorRegistryInstance);
 
                 options.Collectors.AddRange(DefaultCollectors.Get(metricFactory));
             }

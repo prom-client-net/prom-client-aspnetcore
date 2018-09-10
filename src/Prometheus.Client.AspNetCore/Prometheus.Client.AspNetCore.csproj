@@ -20,7 +20,7 @@
   <ItemGroup>
     <!-- for debug -->
     <!--<PackageReference Include="Prometheus.Client" Version="1.6.0" />-->
-    <PackageReference Include="Prometheus.Client" Version="1.6.0-build44" /> 
+    <PackageReference Include="Prometheus.Client" Version="1.6.0-build45" /> 
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions">
