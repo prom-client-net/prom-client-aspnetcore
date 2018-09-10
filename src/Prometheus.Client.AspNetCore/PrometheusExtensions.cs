@@ -41,18 +41,11 @@ namespace Prometheus.Client.AspNetCore
             {
                 coreapp.Run(async context =>
                 {
-                    var req = context.Request;
                     var response = context.Response;
-
-                    req.Headers.TryGetValue("Accept", out var acceptHeaders);
-                    var contentType = ScrapeHandler.GetContentType(acceptHeaders);
-
-                    response.ContentType = contentType;
 
                     using (var outputStream = response.Body)
                     {
-                        var collected = options.CollectorRegistryInstance.CollectAll();
-                        ScrapeHandler.ProcessScrapeRequest(collected, contentType, outputStream);
+                        ScrapeHandler.Process(options.CollectorRegistryInstance, outputStream);
                     }
 
                     await Task.FromResult(0).ConfigureAwait(false);

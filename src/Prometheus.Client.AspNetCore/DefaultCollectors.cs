@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Prometheus.Client.Collectors;
-using System.Runtime.InteropServices;
+using Prometheus.Client.Collectors.Abstractions;
 
 namespace Prometheus.Client.AspNetCore
 {
@@ -14,12 +14,11 @@ namespace Prometheus.Client.AspNetCore
         /// </summary>
         public static IEnumerable<IOnDemandCollector> Get(MetricFactory metricFactory)
         {
-            yield return new DotNetStatsCollector(metricFactory);
-            
-            var isWindows = RuntimeInformation.IsOSPlatform(OSPlatform.Windows);
-            if (isWindows)
-                yield return new WindowsDotNetStatsCollector(metricFactory);
-
+            return new IOnDemandCollector[]
+            {
+                new DotNetStatsCollector(metricFactory),
+                new ProcessCollector(metricFactory) 
+            };
         }
     }
 }

@@ -31,9 +31,9 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
 {
     app.UsePrometheusServer(q =>
-                {
-                    q.MapPath = "/metrics1";
-                });
+    {
+        q.MapPath = "/metrics1";
+    });
 }
 
 ```
