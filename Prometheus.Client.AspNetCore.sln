@@ -15,6 +15,7 @@ ProjectSection(SolutionItems) = preProject
 	LICENSE = LICENSE
 	README.md = README.md
 	.editorconfig = .editorconfig
+	pack.ps1 = pack.ps1
 EndProjectSection
 EndProject
 Global
