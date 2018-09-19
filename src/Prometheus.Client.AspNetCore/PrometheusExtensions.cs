@@ -42,6 +42,7 @@ namespace Prometheus.Client.AspNetCore
                 coreapp.Run(async context =>
                 {
                     var response = context.Response;
+                    response.ContentType = "text/plain; version=0.0.4";
 
                     using (var outputStream = response.Body)
                     {
