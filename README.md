@@ -5,7 +5,6 @@
 [![NuGet](https://img.shields.io/nuget/dt/Prometheus.Client.AspNetCore.svg)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/d5pdqedoxogmiun4/branch/master?svg=true)](https://ci.appveyor.com/project/PrometheusClientNet/prometheus-client-aspnetcore/branch/master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/73abdf76e71f42dfb6887a15eafb250a)](https://www.codacy.com/app/phnx47/Prometheus.Client.AspNetCore?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=PrometheusClientNet/Prometheus.Client.AspNetCore&amp;utm_campaign=Badge_Grade)
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 
