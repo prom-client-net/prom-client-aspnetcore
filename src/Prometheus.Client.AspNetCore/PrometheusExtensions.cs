@@ -1,7 +1,9 @@
-﻿using System;
+using System;
+using System.Net;
 using System.Threading.Tasks;
 using Prometheus.Client.Collectors;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 
 namespace Prometheus.Client.AspNetCore
 {
@@ -36,8 +38,8 @@ namespace Prometheus.Client.AspNetCore
                 throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
 
             RegisterCollectors(options);
-
-            app.Map(options.MapPath, coreapp =>
+            
+            Action<IApplicationBuilder> addMetricsHandler = coreapp =>
             {
                 coreapp.Run(async context =>
                 {
@@ -51,9 +53,15 @@ namespace Prometheus.Client.AspNetCore
 
                     await Task.FromResult(0).ConfigureAwait(false);
                 });
-            });
+            };
 
-            return app;
+            if (options.Port == null)
+            {
+                return app.Map(options.MapPath, addMetricsHandler);
+            }
+
+            Func<HttpContext, bool> portMatches = context => context.Connection.LocalPort == options.Port;
+            return app.Map(options.MapPath, cfg => cfg.MapWhen(portMatches, addMetricsHandler));
         }
 
 
@@ -61,8 +69,8 @@ namespace Prometheus.Client.AspNetCore
         {
             if (options.UseDefaultCollectors)
             {
-                var metricFactory = options.CollectorRegistryInstance == CollectorRegistry.Instance 
-                    ? Metrics.DefaultFactory 
+                var metricFactory = options.CollectorRegistryInstance == CollectorRegistry.Instance
+                    ? Metrics.DefaultFactory
                     : new MetricFactory(options.CollectorRegistryInstance);
 
                 options.Collectors.AddRange(DefaultCollectors.Get(metricFactory));

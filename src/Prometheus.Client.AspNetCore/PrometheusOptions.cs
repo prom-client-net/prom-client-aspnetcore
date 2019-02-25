@@ -15,6 +15,11 @@ namespace Prometheus.Client.AspNetCore
         public string MapPath { get; set; } = "/metrics";
 
         /// <summary>
+        ///     When specified only allow access to metrics on this port, otherwise return 404, default = null.
+        /// </summary>
+        public int? Port { get; set; }
+
+        /// <summary>
         ///     CollectorRegistry intance
         /// </summary>
         public ICollectorRegistry CollectorRegistryInstance { get; set; } = CollectorRegistry.Instance;
