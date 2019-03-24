@@ -56,24 +56,18 @@ namespace Prometheus.Client.AspNetCore
 
             if (options.Port == null)
                 return app.Map(options.MapPath, AddMetricsHandler);
-            
+
             bool PortMatches(HttpContext context) => context.Connection.LocalPort == options.Port;
             return app.Map(options.MapPath, cfg => cfg.MapWhen(PortMatches, AddMetricsHandler));
         }
 
-
         private static void RegisterCollectors(PrometheusOptions options)
         {
             if (options.UseDefaultCollectors)
-            {
-                var metricFactory = options.CollectorRegistryInstance == CollectorRegistry.Instance
-                    ? Metrics.DefaultFactory
-                    : new MetricFactory(options.CollectorRegistryInstance);
+                options.CollectorRegistryInstance.UseDefaultCollectors();
 
-                options.Collectors.AddRange(DefaultCollectors.Get(metricFactory));
-            }
-
-            options.CollectorRegistryInstance.RegisterOnDemandCollectors(options.Collectors);
+            foreach (var collector in options.Collectors)
+                options.CollectorRegistryInstance.Add("", collector); //todo: Add Name
         }
     }
 }

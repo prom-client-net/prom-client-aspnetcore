@@ -22,12 +22,12 @@ namespace Prometheus.Client.AspNetCore
         /// <summary>
         ///     CollectorRegistry intance
         /// </summary>
-        public ICollectorRegistry CollectorRegistryInstance { get; set; } = CollectorRegistry.Instance;
+        public ICollectorRegistry CollectorRegistryInstance { get; set; } = Metrics.DefaultCollectorRegistry;
 
         /// <summary>
         ///     IOnDemandCollectors
         /// </summary>
-        public List<IOnDemandCollector> Collectors { get; set; } = new List<IOnDemandCollector>();
+        public List<ICollector> Collectors { get; set; } = new List<ICollector>();
 
         /// <summary>
         ///     Use default collectors
