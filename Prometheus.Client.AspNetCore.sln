@@ -16,7 +16,6 @@ ProjectSection(SolutionItems) = preProject
 	README.md = README.md
 	.editorconfig = .editorconfig
 	pack.ps1 = pack.ps1
-	renovate.json = renovate.json
 EndProjectSection
 EndProject
 Global
