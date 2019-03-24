@@ -1,5 +1,4 @@
 using System;
-using System.Net;
 using System.Threading.Tasks;
 using Prometheus.Client.Collectors;
 using Microsoft.AspNetCore.Builder;
@@ -38,8 +37,8 @@ namespace Prometheus.Client.AspNetCore
                 throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
 
             RegisterCollectors(options);
-            
-            Action<IApplicationBuilder> addMetricsHandler = coreapp =>
+
+            void AddMetricsHandler(IApplicationBuilder coreapp)
             {
                 coreapp.Run(async context =>
                 {
@@ -53,15 +52,13 @@ namespace Prometheus.Client.AspNetCore
 
                     await Task.FromResult(0).ConfigureAwait(false);
                 });
-            };
-
-            if (options.Port == null)
-            {
-                return app.Map(options.MapPath, addMetricsHandler);
             }
 
-            Func<HttpContext, bool> portMatches = context => context.Connection.LocalPort == options.Port;
-            return app.Map(options.MapPath, cfg => cfg.MapWhen(portMatches, addMetricsHandler));
+            if (options.Port == null)
+                return app.Map(options.MapPath, AddMetricsHandler);
+            
+            bool PortMatches(HttpContext context) => context.Connection.LocalPort == options.Port;
+            return app.Map(options.MapPath, cfg => cfg.MapWhen(PortMatches, AddMetricsHandler));
         }
 
 

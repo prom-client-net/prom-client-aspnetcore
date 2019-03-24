@@ -28,7 +28,7 @@ namespace Prometheus.Client.AspNetCore
         ///     IOnDemandCollectors
         /// </summary>
         public List<IOnDemandCollector> Collectors { get; set; } = new List<IOnDemandCollector>();
-        
+
         /// <summary>
         ///     Use default collectors
         /// </summary>
