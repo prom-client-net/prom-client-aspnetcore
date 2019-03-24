@@ -1,21 +1,21 @@
-version: '{build}-{branch}'
-image: Visual Studio 2017
+version: '{branch}-build{build}'
+image: Ubuntu1804
 
 skip_commits:
   files:
   - '**/*.md'
 
 build_script:
-- pwsh: dotnet build -c Release
-  
+  - sh: dotnet build -c Release
+
 after_build:
-- pwsh: .\pack.ps1
+  - sh: chmod +x pack.sh && ./pack.sh
 
 artifacts:
-- path: '**\artifacts\nuget\*.nupkg'
-  name: Nuget
-- path: '**\artifacts\myget\*.nupkg'
-  name: Myget  
+  - path: '**/artifacts/nuget/*.nupkg'
+    name: NuGet
+  - path: '**/artifacts/myget/*.nupkg'
+    name: MyGet
     
 deploy:
 - provider: NuGet
@@ -23,7 +23,7 @@ deploy:
     secure: nts+1V9NzzFZbyAVeJs951l/7K01aEfLTEGGyb8t2zNMcZhBnlSTGPoQV8IRpsMa
   artifact: NuGet
   on:
-    appveyor_repo_tag: true
+    APPVEYOR_REPO_TAG: true
 - provider: NuGet
   server: https://www.myget.org/F/phnx47-beta/api/v2/package
   api_key:
@@ -32,4 +32,4 @@ deploy:
   artifact: MyGet
   on:
     branch: master
-    appveyor_repo_tag: false    
+    APPVEYOR_REPO_TAG: false    
