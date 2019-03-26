@@ -36,7 +36,8 @@ namespace Prometheus.Client.AspNetCore
             if (!options.MapPath.StartsWith("/"))
                 throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
 
-            RegisterCollectors(options);
+            if (options.UseDefaultCollectors)
+                options.CollectorRegistryInstance.UseDefaultCollectors();
 
             void AddMetricsHandler(IApplicationBuilder coreapp)
             {
@@ -59,15 +60,6 @@ namespace Prometheus.Client.AspNetCore
 
             bool PortMatches(HttpContext context) => context.Connection.LocalPort == options.Port;
             return app.Map(options.MapPath, cfg => cfg.MapWhen(PortMatches, AddMetricsHandler));
-        }
-
-        private static void RegisterCollectors(PrometheusOptions options)
-        {
-            if (options.UseDefaultCollectors)
-                options.CollectorRegistryInstance.UseDefaultCollectors();
-
-            foreach (var collector in options.Collectors)
-                options.CollectorRegistryInstance.Add("", collector); //todo: Add Name
         }
     }
 }
