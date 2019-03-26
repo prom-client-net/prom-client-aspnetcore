@@ -25,11 +25,6 @@ namespace Prometheus.Client.AspNetCore
         public ICollectorRegistry CollectorRegistryInstance { get; set; } = Metrics.DefaultCollectorRegistry;
 
         /// <summary>
-        ///     IOnDemandCollectors
-        /// </summary>
-        public List<ICollector> Collectors { get; set; } = new List<ICollector>();
-
-        /// <summary>
         ///     Use default collectors
         /// </summary>
         public bool UseDefaultCollectors { get; set; } = true;
