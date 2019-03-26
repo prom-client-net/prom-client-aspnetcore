@@ -18,18 +18,18 @@ artifacts:
     name: MyGet
     
 deploy:
-- provider: NuGet
-  api_key:
-    secure: nts+1V9NzzFZbyAVeJs951l/7K01aEfLTEGGyb8t2zNMcZhBnlSTGPoQV8IRpsMa
-  artifact: NuGet
-  on:
-    APPVEYOR_REPO_TAG: true
-- provider: NuGet
-  server: https://www.myget.org/F/phnx47-beta/api/v2/package
-  api_key:
-    secure: Smuwoi47XyX6b6x66VpPnnL96F3cl1nukALrFnZo1Oony38dzouByG7pnt6DX4HT
-  symbol_server: https://www.myget.org/F/phnx47-beta/symbols/api/v2/package
-  artifact: MyGet
-  on:
-    branch: master
-    APPVEYOR_REPO_TAG: false    
+  - provider: NuGet
+    api_key:
+      secure: nts+1V9NzzFZbyAVeJs951l/7K01aEfLTEGGyb8t2zNMcZhBnlSTGPoQV8IRpsMa
+    artifact: NuGet
+    on:
+      APPVEYOR_REPO_TAG: true
+  - provider: NuGet
+      server: https://www.myget.org/F/prometheus-client-net/api/v2/package
+      api_key:
+        secure: DvXZQgy0wcMjR87Zt1qBB9YaDmEiAAiylRxVFfnvkYmfD+oYUetgCi1B036DJZGF
+      symbol_server: https://www.myget.org/F/prometheus-client-net/symbols/api/v2/package
+      artifact: MyGet
+      on:
+        branch: master
+        APPVEYOR_REPO_TAG: false    
