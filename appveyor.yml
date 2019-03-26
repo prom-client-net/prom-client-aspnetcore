@@ -25,11 +25,11 @@ deploy:
     on:
       APPVEYOR_REPO_TAG: true
   - provider: NuGet
-      server: https://www.myget.org/F/prometheus-client-net/api/v2/package
-      api_key:
-        secure: DvXZQgy0wcMjR87Zt1qBB9YaDmEiAAiylRxVFfnvkYmfD+oYUetgCi1B036DJZGF
-      symbol_server: https://www.myget.org/F/prometheus-client-net/symbols/api/v2/package
-      artifact: MyGet
-      on:
-        branch: master
-        APPVEYOR_REPO_TAG: false    
+    server: https://www.myget.org/F/prometheus-client-net/api/v2/package
+    api_key:
+      secure: DvXZQgy0wcMjR87Zt1qBB9YaDmEiAAiylRxVFfnvkYmfD+oYUetgCi1B036DJZGF
+    symbol_server: https://www.myget.org/F/prometheus-client-net/symbols/api/v2/package
+    artifact: MyGet
+    on:
+      branch: master
+      APPVEYOR_REPO_TAG: false   
