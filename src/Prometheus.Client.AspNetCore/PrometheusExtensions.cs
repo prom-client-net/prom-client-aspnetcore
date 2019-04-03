@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using Prometheus.Client.Collectors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -48,10 +47,8 @@ namespace Prometheus.Client.AspNetCore
 
                     using (var outputStream = response.Body)
                     {
-                        ScrapeHandler.Process(options.CollectorRegistryInstance, outputStream);
+                        await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
                     }
-
-                    await Task.FromResult(0).ConfigureAwait(false);
                 });
             }
 
