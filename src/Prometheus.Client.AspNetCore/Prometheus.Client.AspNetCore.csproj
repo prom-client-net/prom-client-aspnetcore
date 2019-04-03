@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>Middleware for the Prometheus.Client</Description>
     <Copyright>2019 © Sergey Kuznetsov</Copyright>
@@ -18,7 +18,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Prometheus.Client" Version="3.0.0-rc1" />
+    <PackageReference Include="Prometheus.Client" Version="3.0.0-rc2" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions">
