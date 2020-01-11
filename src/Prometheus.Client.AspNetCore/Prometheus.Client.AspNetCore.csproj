@@ -5,11 +5,11 @@
     <AssemblyTitle>Prometheus.Client.AspNetCore</AssemblyTitle>
     <VersionPrefix>3.1.0</VersionPrefix>
     <Authors>Sergey Kuznetsov</Authors>
-    <TargetFrameworks>netstandard1.3;netstandard2.0;netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;netstandard2.0;netcoreapp2.2;netstandard2.1</TargetFrameworks>
     <AssemblyName>Prometheus.Client.AspNetCore</AssemblyName>
     <PackageId>Prometheus.Client.AspNetCore</PackageId>
     <PackageTags>prometheus;metrics</PackageTags>
-    <PackageIconUrl>https://image.ibb.co/k4Sc0k/prometheus.png</PackageIconUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
@@ -20,18 +20,15 @@
     <AssemblyOriginatorKeyFile>../../Prometheus.Client.AspNetCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Prometheus.Client" Version="3.1.0-build379" />
+    <None Include="../../icon.png" Pack="true" Visible="false" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prometheus.Client" Version="3.1.0" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'netstandard1.3'">
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.0" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.0" />
-  </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2'">
-    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.0.0" />
-  </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' OR '$(TargetFramework)' == 'netcoreapp2.2' OR '$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
 </Project>
