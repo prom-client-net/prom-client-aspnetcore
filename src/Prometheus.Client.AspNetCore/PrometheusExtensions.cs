@@ -45,10 +45,8 @@ namespace Prometheus.Client.AspNetCore
                     var response = context.Response;
                     response.ContentType = "text/plain; version=0.0.4";
 
-                    using (var outputStream = response.Body)
-                    {
-                        await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
-                    }
+                    using var outputStream = response.Body;
+                    await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
                 });
             }
 
