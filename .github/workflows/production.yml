@@ -15,8 +15,6 @@ jobs:
         uses: actions/setup-dotnet@v1
       - name: Build
         run: dotnet build -c Release
-      - name: Tests
-        run: dotnet test -c Release --no-build
       - name: Pack artifacts
         run: dotnet pack src/Prometheus.Client.AspNetCore -c Release --no-build -o artifacts/
       - name: Publish artifacts
