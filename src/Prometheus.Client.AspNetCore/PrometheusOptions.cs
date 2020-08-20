@@ -18,9 +18,9 @@ namespace Prometheus.Client.AspNetCore
         public int? Port { get; set; }
 
         /// <summary>
-        ///     CollectorRegistry intance
+        ///     CollectorRegistry instance.
         /// </summary>
-        public ICollectorRegistry CollectorRegistryInstance { get; set; } = Metrics.DefaultCollectorRegistry;
+        public ICollectorRegistry CollectorRegistryInstance { get; set; }
 
         /// <summary>
         ///     Use default collectors
