@@ -2,6 +2,7 @@ using System;
 using Prometheus.Client.Collectors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Prometheus.Client.Collectors.Abstractions;
 
 namespace Prometheus.Client.AspNetCore
 {
@@ -34,6 +35,10 @@ namespace Prometheus.Client.AspNetCore
 
             if (!options.MapPath.StartsWith("/"))
                 throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
+
+            options.CollectorRegistryInstance
+                    ??= (ICollectorRegistry)app.ApplicationServices.GetService(typeof(ICollectorRegistry))
+                    ?? Metrics.DefaultCollectorRegistry;
 
             if (options.UseDefaultCollectors)
                 options.CollectorRegistryInstance.UseDefaultCollectors();
