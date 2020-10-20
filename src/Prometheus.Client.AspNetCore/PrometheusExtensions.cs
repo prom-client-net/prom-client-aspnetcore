@@ -25,6 +25,9 @@ namespace Prometheus.Client.AspNetCore
         public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, Action<PrometheusOptions> setupOptions)
         {
             var options = new PrometheusOptions();
+            options.CollectorRegistryInstance
+                = (ICollectorRegistry)app.ApplicationServices.GetService(typeof(ICollectorRegistry)) ?? Metrics.DefaultCollectorRegistry;
+
             setupOptions?.Invoke(options);
 
             if (app == null)
@@ -35,10 +38,6 @@ namespace Prometheus.Client.AspNetCore
 
             if (!options.MapPath.StartsWith("/"))
                 throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
-
-            options.CollectorRegistryInstance
-                    ??= (ICollectorRegistry)app.ApplicationServices.GetService(typeof(ICollectorRegistry))
-                    ?? Metrics.DefaultCollectorRegistry;
 
             if (options.UseDefaultCollectors)
                 options.CollectorRegistryInstance.UseDefaultCollectors();
