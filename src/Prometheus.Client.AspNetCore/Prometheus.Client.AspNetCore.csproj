@@ -3,7 +3,7 @@
     <Description>Middleware for the Prometheus.Client</Description>
     <Copyright>2020 © Serge K, Oleksandr Poliakov</Copyright>
     <AssemblyTitle>Prometheus.Client.AspNetCore</AssemblyTitle>
-    <VersionPrefix>4.1.0</VersionPrefix>
+    <VersionPrefix>4.1.1</VersionPrefix>
     <Authors>Serge K, Oleksandr Poliakov</Authors>
     <TargetFrameworks>netstandard2.0;netcoreapp2.2;netstandard2.1;netcoreapp3.1</TargetFrameworks>
     <AssemblyName>Prometheus.Client.AspNetCore</AssemblyName>
