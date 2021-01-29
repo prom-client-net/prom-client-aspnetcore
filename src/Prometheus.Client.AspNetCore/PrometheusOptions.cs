@@ -1,4 +1,4 @@
-using Prometheus.Client.Collectors.Abstractions;
+using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.AspNetCore
 {

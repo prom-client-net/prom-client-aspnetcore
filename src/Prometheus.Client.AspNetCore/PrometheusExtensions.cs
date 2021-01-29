@@ -2,7 +2,6 @@ using System;
 using Prometheus.Client.Collectors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Prometheus.Client.Collectors.Abstractions;
 
 namespace Prometheus.Client.AspNetCore
 {
