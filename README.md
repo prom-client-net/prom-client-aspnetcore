@@ -2,7 +2,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/Prometheus.Client.AspNetCore.svg)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
 [![NuGet](https://img.shields.io/nuget/dt/Prometheus.Client.AspNetCore.svg)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
-[![CI](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/workflows/CI/badge.svg)](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/actions?query=workflow%3ACI)
+[![CI Master](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/actions/workflows/master.yml/badge.svg?branch=master)](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/actions/workflows/master.yml)
 [![Gitter](https://img.shields.io/gitter/room/PrometheusClientNet/community.svg)](https://gitter.im/PrometheusClientNet/community)
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
