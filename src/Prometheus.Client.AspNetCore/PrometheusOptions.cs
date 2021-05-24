@@ -1,3 +1,4 @@
+using System.Text;
 using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.AspNetCore
@@ -26,5 +27,10 @@ namespace Prometheus.Client.AspNetCore
         ///     Use default collectors
         /// </summary>
         public bool UseDefaultCollectors { get; set; } = true;
+
+        /// <summary>
+        ///     Charset of text response.
+        /// </summary>
+        public Encoding ResponseEncoding { get; set; }
     }
 }
