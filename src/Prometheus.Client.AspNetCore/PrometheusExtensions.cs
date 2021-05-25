@@ -41,12 +41,18 @@ namespace Prometheus.Client.AspNetCore
             if (options.UseDefaultCollectors)
                 options.CollectorRegistryInstance.UseDefaultCollectors();
 
+            var contentType = "text/plain; version=0.0.4";
+
+            if (options.ResponseEncoding != null)
+                contentType += $"; charset={options.ResponseEncoding.BodyName}";
+
             void AddMetricsHandler(IApplicationBuilder coreapp)
             {
                 coreapp.Run(async context =>
                 {
                     var response = context.Response;
-                    response.ContentType = "text/plain; version=0.0.4";
+
+                    response.ContentType = contentType;
 
                     using var outputStream = response.Body;
                     await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
