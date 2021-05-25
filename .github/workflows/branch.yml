@@ -1,4 +1,4 @@
-name: 💿 CI Branch
+name: CI Branch
 
 on:
   push:

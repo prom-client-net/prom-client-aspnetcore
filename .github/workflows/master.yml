@@ -1,4 +1,4 @@
-name: 💿 CI Master
+name: CI Master
 
 on:
   push:
@@ -8,8 +8,8 @@ on:
       - '!refs/tags/*'
 
 jobs:
-  build-dev:
-    name: 🏭 Build Dev
+  build-master:
+    name: 🏭 Build Master
     runs-on: ubuntu-20.04
     steps:
       - name: 🚚 Checkout

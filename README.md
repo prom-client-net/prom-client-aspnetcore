@@ -1,11 +1,12 @@
+[bmac]: https://www.buymeacoffee.com/phnx47
+[ko-fi]: https://ko-fi.com/phnx47
+[patreon]: https://www.patreon.com/phnx47
+
 # Prometheus.Client.AspNetCore
 
 [![NuGet](https://img.shields.io/nuget/v/Prometheus.Client.AspNetCore.svg)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
-[![NuGet](https://img.shields.io/nuget/dt/Prometheus.Client.AspNetCore.svg)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
 [![CI Master](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/actions/workflows/master.yml/badge.svg?branch=master)](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/actions/workflows/master.yml)
-[![Gitter](https://img.shields.io/gitter/room/PrometheusClientNet/community.svg)](https://gitter.im/PrometheusClientNet/community)
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
-
 
 Extension for [Prometheus.Client](https://github.com/PrometheusClientNet/Prometheus.Client)
 
@@ -47,12 +48,13 @@ Contributions to the package are always welcome!
 
 ## Support
 
-I would also very much appreciate your support:
+If you like what I'm accomplishing, feel free to buy me a coffee
 
-<a href="https://www.buymeacoffee.com/phnx47"><img width="32px" src="https://raw.githubusercontent.com/phnx47/files/master/button-sponsors/bmac0.png" alt="Buy Me A Coffee"></a>
-<a href="https://ko-fi.com/phnx47"><img width="32px" src="https://raw.githubusercontent.com/phnx47/files/master/button-sponsors/kofi0.png" alt="Support me on ko-fi"></a>
-<a href="https://www.patreon.com/phnx47"><img width="32px" src="https://raw.githubusercontent.com/phnx47/files/master/button-sponsors/patreon0.png" alt="Support me on Patreon"></a>
+[<img align="left" alt="phnx47 | Buy Me a Coffe" width="32px" src="https://raw.githubusercontent.com/phnx47/files/master/button-sponsors/bmac0.png" />][bmac]
+[<img align="left" alt="phnx47 | Kofi" width="32px" src="https://raw.githubusercontent.com/phnx47/files/master/button-sponsors/kofi0.png" />][ko-fi]
+[<img align="left" alt="phnx47 | Patreon" width="32px" src="https://raw.githubusercontent.com/phnx47/files/master/button-sponsors/patreon0.png" />][patreon]
 
+&nbsp;
 
 ## License
 

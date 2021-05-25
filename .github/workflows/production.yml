@@ -1,4 +1,4 @@
-name: 💿 CI Prod
+name: CI Prod
 
 on:
   push:
