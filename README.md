@@ -17,7 +17,7 @@ dotnet add package Prometheus.Client.AspNetCore
 ```
 #### Quik start:
 
-There are [Examples](https://github.com/PrometheusClientNet/Prometheus.Client.Examples/tree/master/Middleware/WebAspNetCore_2.0)
+There are [Examples](https://github.com/prom-client-net/prom-examples/tree/master/Middleware/WebAspNetCore_2.0)
 
 ```c#
 
