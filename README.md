@@ -5,10 +5,11 @@
 # Prometheus.Client.AspNetCore
 
 [![NuGet](https://img.shields.io/nuget/v/Prometheus.Client.AspNetCore.svg)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
-[![CI Master](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/actions/workflows/master.yml/badge.svg?branch=master)](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/actions/workflows/master.yml)
+[![CI](https://img.shields.io/github/workflow/status/prom-client-net/prom-client-aspnetcore/%F0%9F%92%BF%20CI%20Master?label=CI&logo=github)](https://github.com/prom-client-net/prom-client-aspnetcore/actions/workflows/master.yml)
+[![CodeFactor](https://www.codefactor.io/repository/github/prom-client-net/prom-client-aspnetcore/badge)](https://www.codefactor.io/repository/github/prom-client-net/prom-client-aspnetcore)
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-Extension for [Prometheus.Client](https://github.com/PrometheusClientNet/Prometheus.Client)
+Extension for [Prometheus.Client](https://github.com/prom-client-net/prom-client)
 
 
 #### Installation:

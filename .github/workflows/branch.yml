@@ -1,15 +1,12 @@
-name: CI Branch
+name: 💿 CI Branch
 
 on:
   push:
-    branches:
-      - '*'
-      - '!master'
-    tags:
-      - '!refs/tags/*'
+    branches-ignore:
+      - "master"
   pull_request:
     branches:
-      - master
+      - "master"
 
 jobs:
   build-branch:
