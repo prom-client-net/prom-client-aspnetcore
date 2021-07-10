@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - 'master'
-    tags:
-      - '!refs/tags/*'
 
 jobs:
   build-master:
