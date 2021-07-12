@@ -32,5 +32,10 @@ namespace Prometheus.Client.AspNetCore
         ///     Charset of text response.
         /// </summary>
         public Encoding ResponseEncoding { get; set; }
+
+        /// <summary>
+        ///     Metric prefix for Default collectors
+        /// </summary>
+        public string MetricPrefixName { get; set; } = "";
     }
 }
