@@ -1,10 +1,10 @@
-﻿*.nupkg
 *.user
-*.suo
-*.exe
+*.opencover.xml
 
 .vs
+.vscode
+.idea
+
 bin
 obj
-packages
-.idea
+BenchmarkDotNet.Artifacts
