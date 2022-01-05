@@ -11,12 +11,13 @@
 
 Extension for [Prometheus.Client](https://github.com/prom-client-net/prom-client)
 
+## Installation
 
-#### Installation:
 ```sh
 dotnet add package Prometheus.Client.AspNetCore
 ```
-#### Quik start:
+
+## Use
 
 There are [Examples](https://github.com/prom-client-net/prom-examples/tree/master/Middleware/WebAspNetCore_2.0)
 
@@ -40,6 +41,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 }
 
 ```
+
 ## Contribute
 
 Contributions to the package are always welcome!
@@ -60,4 +62,3 @@ If you like what I'm accomplishing, feel free to buy me a coffee
 ## License
 
 All contents of this package are licensed under the [MIT license](https://opensource.org/licenses/MIT).
-
