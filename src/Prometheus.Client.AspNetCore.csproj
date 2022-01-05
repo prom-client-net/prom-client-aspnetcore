@@ -6,7 +6,7 @@
     <PackageId>Prometheus.Client.AspNetCore</PackageId>
     <RepositoryUrl>https://github.com/prom-client-net/prom-client-aspnetcore</RepositoryUrl>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <AssemblyOriginatorKeyFile>../../Prometheus.Client.AspNetCore.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>../Prometheus.Client.AspNetCore.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <None Include="../icon.png" Visible="false" Pack="true" PackagePath="" />
