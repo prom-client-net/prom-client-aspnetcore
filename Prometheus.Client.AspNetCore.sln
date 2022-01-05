@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D994EEE1-3786-4FDF-8A49-76D8B9819A29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.AspNetCore", "src\Prometheus.Client.AspNetCore\Prometheus.Client.AspNetCore.csproj", "{B70120FA-53E2-4290-8DF2-BD3AF7139DCB}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{FA0CD8D2-E9AE-4518-B989-17901C5928B0}"
 ProjectSection(SolutionItems) = preProject
 	.gitattributes = .gitattributes
@@ -28,10 +26,12 @@ EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{D3EB5CE6-053E-4CB3-A828-A987DA33BC3C}"
 ProjectSection(SolutionItems) = preProject
-	.github\workflows\branch.yml = .github\workflows\branch.yml
+	.github\workflows\pr.yml = .github\workflows\pr.yml
 	.github\workflows\master.yml = .github\workflows\master.yml
-	.github\workflows\production.yml = .github\workflows\production.yml
+	.github\workflows\prod.yml = .github\workflows\prod.yml
 EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.AspNetCore", "src\Prometheus.Client.AspNetCore.csproj", "{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,16 +39,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B70120FA-53E2-4290-8DF2-BD3AF7139DCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B70120FA-53E2-4290-8DF2-BD3AF7139DCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B70120FA-53E2-4290-8DF2-BD3AF7139DCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B70120FA-53E2-4290-8DF2-BD3AF7139DCB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B70120FA-53E2-4290-8DF2-BD3AF7139DCB} = {D994EEE1-3786-4FDF-8A49-76D8B9819A29}
 		{D3EB5CE6-053E-4CB3-A828-A987DA33BC3C} = {255858DA-9CD1-49FD-BA65-010985E26F2A}
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B} = {D994EEE1-3786-4FDF-8A49-76D8B9819A29}
 	EndGlobalSection
 EndGlobal
