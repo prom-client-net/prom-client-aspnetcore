@@ -31,7 +31,7 @@ ProjectSection(SolutionItems) = preProject
 	.github\workflows\prod.yml = .github\workflows\prod.yml
 EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.AspNetCore", "src\Prometheus.Client.AspNetCore\Prometheus.Client.AspNetCore.csproj", "{D95D2825-6A97-4E54-B667-FE4B4F328207}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.AspNetCore", "src\Prometheus.Client.AspNetCore.csproj", "{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,16 +39,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D95D2825-6A97-4E54-B667-FE4B4F328207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D95D2825-6A97-4E54-B667-FE4B4F328207}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D95D2825-6A97-4E54-B667-FE4B4F328207}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D95D2825-6A97-4E54-B667-FE4B4F328207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D3EB5CE6-053E-4CB3-A828-A987DA33BC3C} = {255858DA-9CD1-49FD-BA65-010985E26F2A}
-		{D95D2825-6A97-4E54-B667-FE4B4F328207} = {D994EEE1-3786-4FDF-8A49-76D8B9819A29}
+		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B} = {D994EEE1-3786-4FDF-8A49-76D8B9819A29}
 	EndGlobalSection
 EndGlobal
