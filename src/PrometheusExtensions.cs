@@ -40,7 +40,14 @@ namespace Prometheus.Client.AspNetCore
                 throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
 
             if (options.UseDefaultCollectors)
-                options.CollectorRegistryInstance.UseDefaultCollectors(options.MetricPrefixName);
+            {
+#pragma warning disable CS0618
+                if (options.AddLegacyMetrics)
+                    options.CollectorRegistryInstance.UseDefaultCollectors(options.MetricPrefixName, options.AddLegacyMetrics);
+                else
+                    options.CollectorRegistryInstance.UseDefaultCollectors(options.MetricPrefixName);
+#pragma warning restore CS0618
+            }
 
             var contentType = "text/plain; version=0.0.4";
 
