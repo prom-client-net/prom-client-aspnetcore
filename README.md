@@ -15,7 +15,7 @@ dotnet add package Prometheus.Client.AspNetCore
 
 ## Use
 
-There are [Examples](https://github.com/prom-client-net/prom-examples/tree/master/Middleware)
+There are [Examples](https://github.com/prom-client-net/prom-examples)
 
 ```c#
 
@@ -42,8 +42,8 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerF
 
 Contributions to the package are always welcome!
 
-* Report any bugs or issues you find on the [issue tracker](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore/issues).
-* You can grab the source code at the package's [git repository](https://github.com/PrometheusClientNet/Prometheus.Client.AspNetCore).
+* Report any bugs or issues you find on the [issue tracker](https://github.com/prom-client-net/prom-client-aspnetcore/issues).
+* You can grab the source code at the package's [git repository](https://github.com/prom-client-net/prom-client-aspnetcore).
 
 ## License
 
