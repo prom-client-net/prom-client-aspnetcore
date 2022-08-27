@@ -37,7 +37,7 @@ namespace Prometheus.Client.AspNetCore
                 throw new ArgumentNullException(nameof(options));
 
             if (!options.MapPath.StartsWith("/"))
-                throw new ArgumentException($"MapPath '{options.MapPath}' should start with '/'");
+                options.MapPath = "/" + options.MapPath;
 
             if (options.UseDefaultCollectors)
             {
