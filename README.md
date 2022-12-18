@@ -1,9 +1,10 @@
 # Prometheus.Client.AspNetCore
 
-[![NuGet](https://img.shields.io/nuget/v/Prometheus.Client.AspNetCore.svg)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
-[![CI](https://img.shields.io/github/workflow/status/prom-client-net/prom-client-aspnetcore/%F0%9F%92%BF%20CI%20Master?label=CI&logo=github)](https://github.com/prom-client-net/prom-client-aspnetcore/actions/workflows/master.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/prom-client-net/prom-client-aspnetcore/badge)](https://www.codefactor.io/repository/github/prom-client-net/prom-client-aspnetcore)
-[![License MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![ci](https://img.shields.io/github/actions/workflow/status/prom-client-net/prom-client-aspnetcore/ci.yml?branch=main&label=ci&logo=github&style=flat-square)](https://github.com/prom-client-net/prom-client-aspnetcore/actions/workflows/ci.yml)
+[![nuget](https://img.shields.io/nuget/v/Prometheus.Client.AspNetCore?logo=nuget&style=flat-square)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
+[![nuget](https://img.shields.io/nuget/dt/Prometheus.Client.AspNetCore?logo=nuget&style=flat-square)](https://www.nuget.org/packages/Prometheus.Client.AspNetCore)
+[![codefactor](https://img.shields.io/codefactor/grade/github/prom-client-net/prom-client-aspnetcore?logo=codefactor&style=flat-square)](https://www.codefactor.io/repository/github/prom-client-net/prom-client-aspnetcore)
+[![license](https://img.shields.io/github/license/prom-client-net/prom-client-aspnetcore?style=flat-square)](https://github.com/prom-client-net/prom-client-aspnetcore/blob/main/LICENSE)
 
 Extension for [Prometheus.Client](https://github.com/prom-client-net/prom-client)
 
