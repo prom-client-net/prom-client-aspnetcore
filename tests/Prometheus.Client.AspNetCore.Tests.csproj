@@ -36,7 +36,6 @@
   <ItemGroup Condition="'$(TargetFramework)' != 'netcoreapp2.2' AND '$(TargetFramework)' != 'netcoreapp3.0'">
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.6.0" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)' == 'netcoreapp2.2' OR '$(TargetFramework)' == 'netcoreapp3.0'">
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.*" />

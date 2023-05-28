@@ -73,12 +73,11 @@ public class ApplicationBuilderExtensionsTests
         Assert.Equal($"text/plain; version=0.0.4; charset={encoding.BodyName}", _ctx.Response.ContentType);
     }
 
-
     public static IEnumerable<object[]> GetEncodings()
     {
         yield return new object[] { Encoding.UTF8 };
         yield return new object[] { Encoding.Unicode };
         yield return new object[] { Encoding.ASCII };
-        yield return new object[] { Encoding.UTF7 };
+        yield return new object[] { Encoding.UTF32 };
     }
 }
