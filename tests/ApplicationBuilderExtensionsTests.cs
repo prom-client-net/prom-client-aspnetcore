@@ -25,7 +25,7 @@ public class ApplicationBuilderExtensionsTests
         _app = new ApplicationBuilder(services.BuildServiceProvider());
         _registry = new CollectorRegistry();
         _ctx = new DefaultHttpContext();
-        _ctx.Request.Path = PrometheusOptions.DefaultMapPath;
+        _ctx.Request.Path = Defaults.MapPath;
     }
 
     [Fact]
@@ -55,7 +55,7 @@ public class ApplicationBuilderExtensionsTests
 
         _app.Build().Invoke(_ctx);
 
-        Assert.Equal("text/plain; version=0.0.4", _ctx.Response.ContentType);
+        Assert.Equal(Defaults.ContentType, _ctx.Response.ContentType);
     }
 
     [Theory]
@@ -70,7 +70,7 @@ public class ApplicationBuilderExtensionsTests
 
         _app.Build().Invoke(_ctx);
 
-        Assert.Equal($"text/plain; version=0.0.4; charset={encoding.BodyName}", _ctx.Response.ContentType);
+        Assert.Equal($"{Defaults.ContentType}; charset={encoding.BodyName}", _ctx.Response.ContentType);
     }
 
     public static IEnumerable<object[]> GetEncodings()

@@ -9,12 +9,10 @@ namespace Prometheus.Client.AspNetCore;
 /// </summary>
 public class PrometheusOptions
 {
-    public const string DefaultMapPath = "/metrics";
-
     /// <summary>
     ///     Url, default = "/metrics"
     /// </summary>
-    public string MapPath { get; set; } = DefaultMapPath;
+    public string MapPath { get; set; } = Defaults.MapPath;
 
     /// <summary>
     ///     When specified only allow access to metrics on this port, otherwise return 404

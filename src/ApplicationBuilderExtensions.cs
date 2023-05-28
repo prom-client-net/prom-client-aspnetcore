@@ -49,10 +49,9 @@ public static class ApplicationBuilderExtensions
 #pragma warning restore CS0618
         }
 
-        var contentType = "text/plain; version=0.0.4";
-
-        if (options.ResponseEncoding != null)
-            contentType += $"; charset={options.ResponseEncoding.BodyName}";
+        var contentType = options.ResponseEncoding != null
+            ? $"{Defaults.ContentType}; charset={options.ResponseEncoding.BodyName}"
+            : Defaults.ContentType;
 
         void AddMetricsHandler(IApplicationBuilder coreapp)
         {
