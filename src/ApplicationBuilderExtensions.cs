@@ -8,7 +8,7 @@ namespace Prometheus.Client.AspNetCore;
 /// <summary>
 ///     PrometheusExtensions
 /// </summary>
-public static class PrometheusExtensions
+public static class ApplicationBuilderExtensions
 {
     /// <summary>
     ///     Add PrometheusServer request execution pipeline.

@@ -13,13 +13,13 @@ using Xunit;
 
 namespace Prometheus.Client.AspNetCore.Tests;
 
-public class PrometheusExtensionsTests
+public class ApplicationBuilderExtensionsTests
 {
     private readonly ICollectorRegistry _registry;
     private readonly IApplicationBuilder _app;
     private readonly HttpContext _ctx;
 
-    public PrometheusExtensionsTests()
+    public ApplicationBuilderExtensionsTests()
     {
         var services = new ServiceCollection();
         _app = new ApplicationBuilder(services.BuildServiceProvider());
