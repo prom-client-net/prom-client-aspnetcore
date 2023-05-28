@@ -39,7 +39,7 @@ public class PrometheusOptions
     /// <summary>
     ///     Metric prefix for Default collectors
     /// </summary>
-    public string MetricPrefixName { get; set; } = "";
+    public string MetricPrefixName { get; set; } = string.Empty;
 
     /// <summary>
     ///     Add legacy metrics to Default collectors
