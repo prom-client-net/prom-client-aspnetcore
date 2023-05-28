@@ -3,34 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D994EEE1-3786-4FDF-8A49-76D8B9819A29}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{FA0CD8D2-E9AE-4518-B989-17901C5928B0}"
-ProjectSection(SolutionItems) = preProject
-	.gitattributes = .gitattributes
-	.gitignore = .gitignore
-	LICENSE = LICENSE
-	README.md = README.md
-	.editorconfig = .editorconfig
-	Directory.Build.props = Directory.Build.props
-	.ruleset = .ruleset
-	stylecop.json = stylecop.json
-EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{255858DA-9CD1-49FD-BA65-010985E26F2A}"
-ProjectSection(SolutionItems) = preProject
-	.github\CODEOWNERS = .github\CODEOWNERS
-	.github\FUNDING.yml = .github\FUNDING.yml
-	.github\renovate.json = .github\renovate.json
-EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{D3EB5CE6-053E-4CB3-A828-A987DA33BC3C}"
-ProjectSection(SolutionItems) = preProject
-	.github\workflows\pr.yml = .github\workflows\pr.yml
-	.github\workflows\master.yml = .github\workflows\master.yml
-	.github\workflows\prod.yml = .github\workflows\prod.yml
-EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prometheus.Client.AspNetCore", "src\Prometheus.Client.AspNetCore.csproj", "{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B}"
 EndProject
 Global
@@ -48,7 +20,5 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D3EB5CE6-053E-4CB3-A828-A987DA33BC3C} = {255858DA-9CD1-49FD-BA65-010985E26F2A}
-		{9CEA986B-142E-4A8A-87B4-A6C2A5B7106B} = {D994EEE1-3786-4FDF-8A49-76D8B9819A29}
 	EndGlobalSection
 EndGlobal
