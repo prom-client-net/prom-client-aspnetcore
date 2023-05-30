@@ -3,6 +3,7 @@
     <LangVersion>11.0</LangVersion>
     <Authors>prom-client-net contributors</Authors>
     <Copyright>Copyright © prom-client-net</Copyright>
+    <PackageId>$(MSBuildProjectName)</PackageId>
     <PackageTags>prometheus;metrics</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -15,8 +16,13 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <PackageOutputPath>nupkgs</PackageOutputPath>
+    <AssemblyOriginatorKeyFile>$(SolutionDir)$(SolutionName).snk</AssemblyOriginatorKeyFile>
     <NoWarn>CS1591;NETSDK1138</NoWarn>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(SolutionDir)icon.png" Visible="false" Pack="true" PackagePath="" />
+    <None Include="$(SolutionDir)README.md" Visible="false" Pack="true" PackagePath="" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -32,6 +38,6 @@
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1" PrivateAssets="All" />
   </ItemGroup>
   <PropertyGroup>
-    <CodeAnalysisRuleSet>$(SolutionDir)\.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>$(SolutionDir).ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
 </Project>
