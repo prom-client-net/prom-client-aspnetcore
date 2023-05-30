@@ -23,18 +23,15 @@ public static class ApplicationBuilderExtensions
     /// </summary>
     public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, Action<PrometheusOptions> setupOptions)
     {
+        if (app == null)
+            throw new ArgumentNullException(nameof(app));
+
         var options = new PrometheusOptions
         {
             CollectorRegistryInstance = (ICollectorRegistry)app.ApplicationServices.GetService(typeof(ICollectorRegistry)) ?? Metrics.DefaultCollectorRegistry
         };
 
         setupOptions?.Invoke(options);
-
-        if (app == null)
-            throw new ArgumentNullException(nameof(app));
-
-        if (options == null)
-            throw new ArgumentNullException(nameof(options));
 
         if (!options.MapPath.StartsWith("/"))
             options.MapPath = "/" + options.MapPath;
