@@ -16,4 +16,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
     <PackageReference Include="System.Text.Encodings.Web" Version="4.5.1" />
   </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="$(MSBuildProjectName).Tests, PublicKey=00240000048000009400000006020000002400005253413100040000010001008be6f2b28dd255318050634aca9465e8d012e309e1d8165462810ca599355ecc0ec05f67fd8d0dac9dabe6df4636764262c742574fa17eb243862c3349521ecff57153ecd557059560a73b0c5ef3cf1587a763c30acdb9222decb309a9425e29b1ed402398d1312e87947e73e03282d2a66156d6ad2bbf7cf924e349a0e9d59d" />
+  </ItemGroup>
 </Project>
