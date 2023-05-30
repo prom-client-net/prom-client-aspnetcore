@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
@@ -26,6 +27,12 @@ public class ApplicationBuilderExtensionsTests
         _registry = new CollectorRegistry();
         _ctx = new DefaultHttpContext();
         _ctx.Request.Path = Defaults.MapPath;
+    }
+
+    [Fact]
+    public void WhenApplicationBuilderIsNull_Throws_ArgumentNullException()
+    {
+        Assert.Throws<ArgumentNullException>(() => ((ApplicationBuilder)null).UsePrometheusServer());
     }
 
     [Fact]
