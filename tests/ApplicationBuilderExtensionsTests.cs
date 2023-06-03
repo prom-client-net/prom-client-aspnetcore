@@ -22,9 +22,12 @@ public class ApplicationBuilderExtensionsTests
 
     public ApplicationBuilderExtensionsTests()
     {
-        var services = new ServiceCollection();
-        _app = new ApplicationBuilder(services.BuildServiceProvider());
         _registry = new CollectorRegistry();
+
+        var services = new ServiceCollection();
+        services.AddSingleton(_registry);
+        _app = new ApplicationBuilder(services.BuildServiceProvider());
+
         _ctx = new DefaultHttpContext();
         _ctx.Request.Path = Defaults.MapPath;
     }
@@ -38,7 +41,7 @@ public class ApplicationBuilderExtensionsTests
     [Fact]
     public void DefaultPath_Return_200()
     {
-        _app.UsePrometheusServer(q => q.CollectorRegistryInstance = _registry);
+        _app.UsePrometheusServer();
         _app.Build().Invoke(_ctx);
 
         Assert.Equal(200, _ctx.Response.StatusCode);
@@ -52,7 +55,6 @@ public class ApplicationBuilderExtensionsTests
     {
         _app.UsePrometheusServer(q =>
         {
-            q.CollectorRegistryInstance = _registry;
             q.MapPath = path;
         });
 
@@ -70,7 +72,6 @@ public class ApplicationBuilderExtensionsTests
     {
         _app.UsePrometheusServer(q =>
         {
-            q.CollectorRegistryInstance = _registry;
             q.MapPath = path;
         });
 
@@ -86,7 +87,7 @@ public class ApplicationBuilderExtensionsTests
     [InlineData("/test")]
     public void WrongPath_Return_404(string path)
     {
-        _app.UsePrometheusServer(q => q.CollectorRegistryInstance = _registry);
+        _app.UsePrometheusServer();
 
         _ctx.Request.Path = path;
         _app.Build().Invoke(_ctx);
@@ -97,7 +98,7 @@ public class ApplicationBuilderExtensionsTests
     [Fact]
     public void Default_ContentType()
     {
-        _app.UsePrometheusServer(q => q.CollectorRegistryInstance = _registry);
+        _app.UsePrometheusServer();
 
         _app.Build().Invoke(_ctx);
 
@@ -112,7 +113,6 @@ public class ApplicationBuilderExtensionsTests
     {
         _app.UsePrometheusServer(q =>
         {
-            q.CollectorRegistryInstance = _registry;
             q.Port = port;
         });
 
@@ -128,7 +128,6 @@ public class ApplicationBuilderExtensionsTests
     {
         _app.UsePrometheusServer(q =>
         {
-            q.CollectorRegistryInstance = _registry;
             q.ResponseEncoding = encoding;
         });
 
