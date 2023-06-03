@@ -83,7 +83,7 @@ public class ApplicationBuilderExtensionsTests
     [Fact]
     public void WrongPath_Return_404()
     {
-        _app.UsePrometheusServer();
+        _app.UsePrometheusServer(q => q.CollectorRegistryInstance = _registry);
 
         _ctx.Request.Path = "/wrong";
         _app.Build().Invoke(_ctx);
@@ -101,6 +101,23 @@ public class ApplicationBuilderExtensionsTests
         Assert.Equal(Defaults.ContentType, _ctx.Response.ContentType);
     }
 
+    [Theory]
+    [InlineData(1234)]
+    [InlineData(8080)]
+    [InlineData(5050)]
+    public void CustomPort_Return_200(int port)
+    {
+        _app.UsePrometheusServer(q =>
+        {
+            q.CollectorRegistryInstance = _registry;
+            q.Port = port;
+        });
+
+        _ctx.Connection.LocalPort = port;
+        _app.Build().Invoke(_ctx);
+
+        Assert.Equal(200, _ctx.Response.StatusCode);
+    }
 
     [Theory]
     [MemberData(nameof(GetEncodings))]
