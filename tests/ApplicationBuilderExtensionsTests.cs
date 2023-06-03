@@ -80,12 +80,15 @@ public class ApplicationBuilderExtensionsTests
         Assert.Equal(200, _ctx.Response.StatusCode);
     }
 
-    [Fact]
-    public void WrongPath_Return_404()
+    [Theory]
+    [InlineData("/wrong")]
+    [InlineData("/wr1")]
+    [InlineData("/test")]
+    public void WrongPath_Return_404(string path)
     {
         _app.UsePrometheusServer(q => q.CollectorRegistryInstance = _registry);
 
-        _ctx.Request.Path = "/wrong";
+        _ctx.Request.Path = path;
         _app.Build().Invoke(_ctx);
 
         Assert.Equal(404, _ctx.Response.StatusCode);
