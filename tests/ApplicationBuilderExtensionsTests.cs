@@ -36,7 +36,7 @@ public class ApplicationBuilderExtensionsTests
     }
 
     [Fact]
-    public void DefaultUrl_Return_200()
+    public void DefaultPath_Return_200()
     {
         _app.UsePrometheusServer(q => q.CollectorRegistryInstance = _registry);
         _app.Build().Invoke(_ctx);
@@ -44,8 +44,44 @@ public class ApplicationBuilderExtensionsTests
         Assert.Equal(200, _ctx.Response.StatusCode);
     }
 
+    [Theory]
+    [InlineData("/path")]
+    [InlineData("/test")]
+    [InlineData("/test1")]
+    public void CustomPath_Return_200(string path)
+    {
+        _app.UsePrometheusServer(q =>
+        {
+            q.CollectorRegistryInstance = _registry;
+            q.MapPath = path;
+        });
+
+        _ctx.Request.Path = $"{path}";
+        _app.Build().Invoke(_ctx);
+
+        Assert.Equal(200, _ctx.Response.StatusCode);
+    }
+
+    [Theory]
+    [InlineData("path")]
+    [InlineData("test")]
+    [InlineData("test1")]
+    public void CustomPath_Prepend_Slash_Return_200(string path)
+    {
+        _app.UsePrometheusServer(q =>
+        {
+            q.CollectorRegistryInstance = _registry;
+            q.MapPath = path;
+        });
+
+        _ctx.Request.Path = $"/{path}";
+        _app.Build().Invoke(_ctx);
+
+        Assert.Equal(200, _ctx.Response.StatusCode);
+    }
+
     [Fact]
-    public void WrongUrl_Return_404()
+    public void WrongPath_Return_404()
     {
         _app.UsePrometheusServer();
 
@@ -64,6 +100,7 @@ public class ApplicationBuilderExtensionsTests
 
         Assert.Equal(Defaults.ContentType, _ctx.Response.ContentType);
     }
+
 
     [Theory]
     [MemberData(nameof(GetEncodings))]
