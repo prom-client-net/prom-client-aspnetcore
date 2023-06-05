@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.Builder.Internal;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Prometheus.Client.Collectors;
+using Prometheus.Client.Collectors.DotNetStats;
+using Prometheus.Client.Collectors.ProcessStats;
 using Xunit;
 
 namespace Prometheus.Client.AspNetCore.Tests;
@@ -47,16 +49,71 @@ public class ApplicationBuilderExtensionsTests
         Assert.Equal(200, _ctx.Response.StatusCode);
     }
 
+    [Fact]
+    public void UseDefaultCollectors_True_Register_DefaultCollectors()
+    {
+        _app.UsePrometheusServer();
+
+        _registry.TryGet(nameof(ProcessCollector), out var processCollector);
+        Assert.NotNull(processCollector);
+
+        _registry.TryGet(nameof(GCTotalMemoryCollector), out var gcTotalMemoryCollector);
+        Assert.NotNull(gcTotalMemoryCollector);
+
+        _registry.TryGet(nameof(GCCollectionCountCollector), out var gcCollectionCountCollector);
+        Assert.NotNull(gcCollectionCountCollector);
+    }
+
+    [Fact]
+    public void UseDefaultCollectors_False_NotRegister_DefaultCollectors()
+    {
+        _app.UsePrometheusServer(q => q.UseDefaultCollectors = false);
+
+        _registry.TryGet(nameof(ProcessCollector), out var processCollector);
+        Assert.Null(processCollector);
+
+        _registry.TryGet(nameof(GCTotalMemoryCollector), out var gcTotalMemoryCollector);
+        Assert.Null(gcTotalMemoryCollector);
+
+        _registry.TryGet(nameof(GCCollectionCountCollector), out var gcCollectionCountCollector);
+        Assert.Null(gcCollectionCountCollector);
+    }
+
+    [Fact]
+    public void AddLegacyMetrics_True_Contains_LegacyMetrics()
+    {
+        _app.UsePrometheusServer(q => q.AddLegacyMetrics = true);
+
+        _registry.TryGet(nameof(ProcessCollector), out var processCollector);
+        Assert.Contains("process_virtual_bytes", processCollector.MetricNames);
+        Assert.Contains("process_private_bytes", processCollector.MetricNames);
+        Assert.Contains("process_working_set", processCollector.MetricNames);
+
+        _registry.TryGet(nameof(GCTotalMemoryCollector), out var gcTotalMemoryCollector);
+        Assert.Contains("dotnet_totalmemory", gcTotalMemoryCollector.MetricNames);
+    }
+
+    [Fact]
+    public void AddLegacyMetrics_False_DoesNotContain_LegacyMetrics()
+    {
+        _app.UsePrometheusServer();
+
+        _registry.TryGet(nameof(ProcessCollector), out var processCollector);
+        Assert.DoesNotContain("process_virtual_bytes", processCollector.MetricNames);
+        Assert.DoesNotContain("process_private_bytes", processCollector.MetricNames);
+        Assert.DoesNotContain("process_working_set", processCollector.MetricNames);
+
+        _registry.TryGet(nameof(GCTotalMemoryCollector), out var gcTotalMemoryCollector);
+        Assert.DoesNotContain("dotnet_totalmemory", gcTotalMemoryCollector.MetricNames);
+    }
+
     [Theory]
     [InlineData("/path")]
     [InlineData("/test")]
     [InlineData("/test1")]
     public void CustomPath_Return_200(string path)
     {
-        _app.UsePrometheusServer(q =>
-        {
-            q.MapPath = path;
-        });
+        _app.UsePrometheusServer(q => { q.MapPath = path; });
 
         _ctx.Request.Path = $"{path}";
         _app.Build().Invoke(_ctx);
@@ -70,10 +127,7 @@ public class ApplicationBuilderExtensionsTests
     [InlineData("test1")]
     public void CustomPath_Prepend_Slash_Return_200(string path)
     {
-        _app.UsePrometheusServer(q =>
-        {
-            q.MapPath = path;
-        });
+        _app.UsePrometheusServer(q => { q.MapPath = path; });
 
         _ctx.Request.Path = $"/{path}";
         _app.Build().Invoke(_ctx);
@@ -111,10 +165,7 @@ public class ApplicationBuilderExtensionsTests
     [InlineData(5050)]
     public void CustomPort_Return_200(int port)
     {
-        _app.UsePrometheusServer(q =>
-        {
-            q.Port = port;
-        });
+        _app.UsePrometheusServer(q => { q.Port = port; });
 
         _ctx.Connection.LocalPort = port;
         _app.Build().Invoke(_ctx);
@@ -126,10 +177,7 @@ public class ApplicationBuilderExtensionsTests
     [MemberData(nameof(GetEncodings))]
     public void CustomResponseEncoding_Return_ContentType_With_Encoding(Encoding encoding)
     {
-        _app.UsePrometheusServer(q =>
-        {
-            q.ResponseEncoding = encoding;
-        });
+        _app.UsePrometheusServer(q => { q.ResponseEncoding = encoding; });
 
         _app.Build().Invoke(_ctx);
 
