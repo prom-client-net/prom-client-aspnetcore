@@ -35,13 +35,13 @@ public class ApplicationBuilderExtensionsTests
     }
 
     [Fact]
-    public void WhenApplicationBuilderIsNull_Throws_ArgumentNullException()
+    public void ApplicationBuilderIsNull_Throws_ArgumentNullException()
     {
         Assert.Throws<ArgumentNullException>(() => ((ApplicationBuilder)null).UsePrometheusServer());
     }
 
     [Fact]
-    public void DefaultPath_Return_200()
+    public void Default_Path_Return_200()
     {
         _app.UsePrometheusServer();
         _app.Build().Invoke(_ctx);
@@ -107,11 +107,37 @@ public class ApplicationBuilderExtensionsTests
         Assert.DoesNotContain("dotnet_totalmemory", gcTotalMemoryCollector.MetricNames);
     }
 
+    [Fact]
+    public void Custom_CollectorRegistry()
+    {
+        var customRegistry = new CollectorRegistry();
+        _app.UsePrometheusServer(q => q.CollectorRegistryInstance = customRegistry);
+
+        _registry.TryGet(nameof(ProcessCollector), out var collector);
+        Assert.Null(collector);
+
+        customRegistry.TryGet(nameof(ProcessCollector), out collector);
+        Assert.NotNull(collector);
+    }
+
+    [Fact]
+    public void App_Without_CollectorRegistry_Use_Static_CollectorRegistry()
+    {
+        var customApp = new ApplicationBuilder(new ServiceCollection().BuildServiceProvider());
+        customApp.UsePrometheusServer();
+
+        _registry.TryGet(nameof(ProcessCollector), out var collector);
+        Assert.Null(collector);
+
+        Metrics.DefaultCollectorRegistry.TryGet(nameof(ProcessCollector), out collector);
+        Assert.NotNull(collector);
+    }
+
     [Theory]
     [InlineData("/path")]
     [InlineData("/test")]
     [InlineData("/test1")]
-    public void CustomPath_Return_200(string path)
+    public void Custom_Path_Return_200(string path)
     {
         _app.UsePrometheusServer(q => { q.MapPath = path; });
 
@@ -125,7 +151,7 @@ public class ApplicationBuilderExtensionsTests
     [InlineData("path")]
     [InlineData("test")]
     [InlineData("test1")]
-    public void CustomPath_Prepend_Slash_Return_200(string path)
+    public void Custom_Path_Prepend_Slash_Return_200(string path)
     {
         _app.UsePrometheusServer(q => { q.MapPath = path; });
 
@@ -139,7 +165,7 @@ public class ApplicationBuilderExtensionsTests
     [InlineData("/wrong")]
     [InlineData("/wr1")]
     [InlineData("/test")]
-    public void WrongPath_Return_404(string path)
+    public void Wrong_Path_Return_404(string path)
     {
         _app.UsePrometheusServer();
 
@@ -163,7 +189,7 @@ public class ApplicationBuilderExtensionsTests
     [InlineData(1234)]
     [InlineData(8080)]
     [InlineData(5050)]
-    public void CustomPort_Return_200(int port)
+    public void Custom_Port_Return_200(int port)
     {
         _app.UsePrometheusServer(q => { q.Port = port; });
 
@@ -175,7 +201,7 @@ public class ApplicationBuilderExtensionsTests
 
     [Theory]
     [MemberData(nameof(GetEncodings))]
-    public void CustomResponseEncoding_Return_ContentType_With_Encoding(Encoding encoding)
+    public void Custom_ResponseEncoding_Return_ContentType_With_Encoding(Encoding encoding)
     {
         _app.UsePrometheusServer(q => { q.ResponseEncoding = encoding; });
 
