@@ -17,27 +17,24 @@ dotnet add package Prometheus.Client.AspNetCore
 
 ## Use
 
-There are [Examples](https://github.com/prom-client-net/prom-examples)
+[Examples](https://github.com/prom-client-net/prom-examples)
 
 ```c#
-
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
+public void Configure(IApplicationBuilder app)
 {
     app.UsePrometheusServer();
 }
-
 ```
 
 ```c#
-
-public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IApplicationLifetime appLifetime)
+public void Configure(IApplicationBuilder app)
 {
     app.UsePrometheusServer(q =>
     {
-        q.MapPath = "/metrics1";
+        q.MapPath = "/prom";
+        q.MetricPrefixName = "my_app_";
     });
 }
-
 ```
 
 ## Contribute
