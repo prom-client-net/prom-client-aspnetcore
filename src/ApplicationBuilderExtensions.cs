@@ -58,7 +58,7 @@ public static class ApplicationBuilderExtensions
 
                 response.ContentType = contentType;
 
-                using var outputStream = response.Body;
+                await using var outputStream = response.Body;
                 await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
             });
         }

@@ -2,11 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Builder;
-
-#if OLDNETCORE
-using Microsoft.AspNetCore.Builder.Internal;
-#endif
-
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Prometheus.Client.Collectors;
