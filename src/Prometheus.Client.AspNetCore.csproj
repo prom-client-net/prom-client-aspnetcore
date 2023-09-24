@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <Description>ASP.NET Core middleware for the Prometheus.Client</Description>
-    <VersionPrefix>5.0.0</VersionPrefix>
     <TargetFrameworks>netcoreapp3.1;net5.0</TargetFrameworks>
     <RepositoryUrl>https://github.com/prom-client-net/prom-client-aspnetcore</RepositoryUrl>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
