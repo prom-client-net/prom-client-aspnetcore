@@ -106,7 +106,7 @@ public class ApplicationBuilderExtensionsTests
     public void Custom_CollectorRegistry()
     {
         var customRegistry = new CollectorRegistry();
-        _app.UsePrometheusServer(q => q.CollectorRegistryInstance = customRegistry);
+        _app.UsePrometheusServer(q => q.CollectorRegistry = customRegistry);
 
         _registry.TryGet(nameof(ProcessCollector), out var collector);
         Assert.Null(collector);

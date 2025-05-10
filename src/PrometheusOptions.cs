@@ -22,7 +22,7 @@ public class PrometheusOptions
     /// <summary>
     ///     CollectorRegistry instance.
     /// </summary>
-    public ICollectorRegistry CollectorRegistryInstance { get; set; }
+    public ICollectorRegistry CollectorRegistry { get; set; }
 
     /// <summary>
     ///     Use default collectors

@@ -33,7 +33,7 @@ public static class ApplicationBuilderExtensions
 
         var options = new PrometheusOptions
         {
-            CollectorRegistryInstance = (ICollectorRegistry)app.ApplicationServices.GetService(typeof(ICollectorRegistry)) ?? Metrics.DefaultCollectorRegistry
+            CollectorRegistry = (ICollectorRegistry)app.ApplicationServices.GetService(typeof(ICollectorRegistry)) ?? Metrics.DefaultCollectorRegistry
         };
 
         setupOptions?.Invoke(options);
@@ -45,9 +45,9 @@ public static class ApplicationBuilderExtensions
         {
 #pragma warning disable CS0618
             if (options.AddLegacyMetrics)
-                options.CollectorRegistryInstance.UseDefaultCollectors(options.MetricPrefixName, options.AddLegacyMetrics);
+                options.CollectorRegistry.UseDefaultCollectors(options.MetricPrefixName, options.AddLegacyMetrics);
             else
-                options.CollectorRegistryInstance.UseDefaultCollectors(options.MetricPrefixName);
+                options.CollectorRegistry.UseDefaultCollectors(options.MetricPrefixName);
 #pragma warning restore CS0618
         }
 
@@ -68,7 +68,7 @@ public static class ApplicationBuilderExtensions
                 response.ContentType = contentType;
 
                 await using var outputStream = response.Body;
-                await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
+                await ScrapeHandler.ProcessAsync(options.CollectorRegistry, outputStream);
             });
         }
     }
