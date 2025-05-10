@@ -42,14 +42,7 @@ public static class ApplicationBuilderExtensions
             options.MapPath = "/" + options.MapPath;
 
         if (options.UseDefaultCollectors)
-        {
-#pragma warning disable CS0618
-            if (options.AddLegacyMetrics)
-                options.CollectorRegistry.UseDefaultCollectors(options.MetricPrefixName, options.AddLegacyMetrics);
-            else
-                options.CollectorRegistry.UseDefaultCollectors(options.MetricPrefixName);
-#pragma warning restore CS0618
-        }
+            options.CollectorRegistry.UseDefaultCollectors(options.MetricPrefixName);
 
         var contentType = options.ResponseEncoding != null
             ? $"{Defaults.ContentType}; charset={options.ResponseEncoding.BodyName}"
