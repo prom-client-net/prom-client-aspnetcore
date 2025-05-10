@@ -177,11 +177,8 @@ public class ApplicationBuilderExtensionsTests
         Assert.Equal($"{Defaults.ContentType}; charset={encoding.BodyName}", _ctx.Response.ContentType);
     }
 
-    public static IEnumerable<object[]> GetEncodings()
+    public static IEnumerable<TheoryDataRow<Encoding>> GetEncodings()
     {
-        yield return new object[] { Encoding.UTF8 };
-        yield return new object[] { Encoding.Unicode };
-        yield return new object[] { Encoding.ASCII };
-        yield return new object[] { Encoding.UTF32 };
+        return [Encoding.UTF8, Encoding.Unicode, Encoding.ASCII, Encoding.UTF32];
     }
 }
