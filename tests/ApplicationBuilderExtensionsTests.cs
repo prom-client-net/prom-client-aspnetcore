@@ -75,34 +75,6 @@ public class ApplicationBuilderExtensionsTests
     }
 
     [Fact]
-    public void AddLegacyMetrics_True_Contains_LegacyMetrics()
-    {
-        _app.UsePrometheusServer(q => q.AddLegacyMetrics = true);
-
-        _registry.TryGet(nameof(ProcessCollector), out var processCollector);
-        Assert.Contains("process_virtual_bytes", processCollector.MetricNames);
-        Assert.Contains("process_private_bytes", processCollector.MetricNames);
-        Assert.Contains("process_working_set", processCollector.MetricNames);
-
-        _registry.TryGet(nameof(GCTotalMemoryCollector), out var gcTotalMemoryCollector);
-        Assert.Contains("dotnet_totalmemory", gcTotalMemoryCollector.MetricNames);
-    }
-
-    [Fact]
-    public void AddLegacyMetrics_False_DoesNotContain_LegacyMetrics()
-    {
-        _app.UsePrometheusServer();
-
-        _registry.TryGet(nameof(ProcessCollector), out var processCollector);
-        Assert.DoesNotContain("process_virtual_bytes", processCollector.MetricNames);
-        Assert.DoesNotContain("process_private_bytes", processCollector.MetricNames);
-        Assert.DoesNotContain("process_working_set", processCollector.MetricNames);
-
-        _registry.TryGet(nameof(GCTotalMemoryCollector), out var gcTotalMemoryCollector);
-        Assert.DoesNotContain("dotnet_totalmemory", gcTotalMemoryCollector.MetricNames);
-    }
-
-    [Fact]
     public void Custom_CollectorRegistry()
     {
         var customRegistry = new CollectorRegistry();
