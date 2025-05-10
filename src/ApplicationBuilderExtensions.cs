@@ -1,30 +1,35 @@
 using System;
-using Prometheus.Client.Collectors;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.AspNetCore;
 
 /// <summary>
-///     PrometheusExtensions
+/// Extension methods for <see cref="IApplicationBuilder"/> to configure Prometheus metrics middleware.
 /// </summary>
 public static class ApplicationBuilderExtensions
 {
     /// <summary>
-    ///     Add PrometheusServer request execution pipeline.
+    /// Adds Prometheus metrics middleware to the application pipeline.
     /// </summary>
+    /// <param name="app">The <see cref="IApplicationBuilder"/> to configure.</param>
+    /// <returns>The <see cref="IApplicationBuilder"/>.</returns>
     public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app)
     {
         return UsePrometheusServer(app, null);
     }
 
     /// <summary>
-    ///     Add PrometheusServer request execution pipeline.
+    /// Adds Prometheus metrics middleware to the application pipeline with custom options.
     /// </summary>
+    /// <param name="app">The <see cref="IApplicationBuilder"/> to configure.</param>
+    /// <param name="setupOptions">An <see cref="Action{PrometheusOptions}"/> to configure options.</param>
+    /// <returns>The <see cref="IApplicationBuilder"/>.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="app"/> is <c>null</c>.</exception>
     public static IApplicationBuilder UsePrometheusServer(this IApplicationBuilder app, Action<PrometheusOptions> setupOptions)
     {
-        if (app == null)
-            throw new ArgumentNullException(nameof(app));
+        ArgumentNullException.ThrowIfNull(app);
 
         var options = new PrometheusOptions
         {
@@ -33,7 +38,7 @@ public static class ApplicationBuilderExtensions
 
         setupOptions?.Invoke(options);
 
-        if (!options.MapPath.StartsWith("/"))
+        if (!options.MapPath.StartsWith('/'))
             options.MapPath = "/" + options.MapPath;
 
         if (options.UseDefaultCollectors)
@@ -50,23 +55,21 @@ public static class ApplicationBuilderExtensions
             ? $"{Defaults.ContentType}; charset={options.ResponseEncoding.BodyName}"
             : Defaults.ContentType;
 
-        void AddMetricsHandler(IApplicationBuilder coreapp)
+        return options.Port == null
+            ? app.Map(options.MapPath, AddMetricsHandler)
+            : app.Map(options.MapPath, cfg => cfg
+                .MapWhen(ctx => ctx.Connection.LocalPort == options.Port, AddMetricsHandler));
+
+        void AddMetricsHandler(IApplicationBuilder ab)
         {
-            coreapp.Run(async context =>
+            ab.Run(async context =>
             {
                 var response = context.Response;
-
                 response.ContentType = contentType;
 
                 await using var outputStream = response.Body;
                 await ScrapeHandler.ProcessAsync(options.CollectorRegistryInstance, outputStream);
             });
         }
-
-        if (options.Port == null)
-            return app.Map(options.MapPath, AddMetricsHandler);
-
-        bool PortMatches(HttpContext context) => context.Connection.LocalPort == options.Port;
-        return app.Map(options.MapPath, cfg => cfg.MapWhen(PortMatches, AddMetricsHandler));
     }
 }
