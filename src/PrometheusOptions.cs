@@ -1,41 +1,40 @@
-using System;
 using System.Text;
 using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.AspNetCore;
 
 /// <summary>
-///     Options for Prometheus
+/// Configuration options for Prometheus metrics middleware.
 /// </summary>
 public class PrometheusOptions
 {
     /// <summary>
-    ///     Url, default = "/metrics"
+    /// The endpoint path for metrics. Default is "/metrics".
     /// </summary>
     public string MapPath { get; set; } = Defaults.MapPath;
 
     /// <summary>
-    ///     When specified only allow access to metrics on this port, otherwise return 404
+    /// Port restriction for metrics endpoint.
     /// </summary>
     public int? Port { get; set; }
 
     /// <summary>
-    ///     CollectorRegistry instance.
+    /// The <see cref="ICollectorRegistry"/> instance to use for metric collection.
     /// </summary>
     public ICollectorRegistry CollectorRegistry { get; set; }
 
     /// <summary>
-    ///     Use default collectors
+    /// Whether to register default system metric collectors. Default is <c>true</c>.
     /// </summary>
     public bool UseDefaultCollectors { get; set; } = true;
 
     /// <summary>
-    ///     Charset of text response.
+    /// The text encoding for response content.
     /// </summary>
     public Encoding ResponseEncoding { get; set; }
 
     /// <summary>
-    ///     Metric prefix for Default collectors
+    /// Metric name prefix for default collectors.
     /// </summary>
     public string MetricPrefixName { get; set; } = string.Empty;
 }
