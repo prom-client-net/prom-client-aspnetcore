@@ -1,6 +1,5 @@
 using System;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Prometheus.Client.Collectors;
 
 namespace Prometheus.Client.AspNetCore;
